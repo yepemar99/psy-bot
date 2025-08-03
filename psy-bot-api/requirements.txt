@@ -1,0 +1,9 @@
+Flask
+flask-cors
+openai
+python-dotenv
+peewee
+psycopg2-binary
+bcrypt
+PyJWT
+requests

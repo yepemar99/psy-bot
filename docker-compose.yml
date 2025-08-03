@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_DB: psybdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  backend:
+    build: ./psy-bot-api
+    volumes:
+      - ./psy-bot-api:/app
+    ports:
+      - "5000:5000"
+    environment:
+      FLASK_ENV: development
+      DB_NAME: psybdb
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_HOST: db
+      DB_PORT: 5432
+    depends_on:
+      - db
+    command: flask run --host=0.0.0.0 --port=5000 --reload
+
+  frontend:
+    build: ./psy-bot-client
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    restart: always
+
+volumes:
+  postgres-data:

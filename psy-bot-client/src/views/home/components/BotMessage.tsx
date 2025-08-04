@@ -5,7 +5,7 @@ interface BotMessageProps {
 }
 
 const BotMessage = ({ message }: BotMessageProps) => {
-  return <div className="px-4 py-2 text-sm max-w-lg">{message.content}</div>;
+  return <div className="px-4 py-2 text-sm max-w-xl">{message.content}</div>;
 };
 
 export default BotMessage;

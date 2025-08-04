@@ -8,7 +8,7 @@ import { routes } from "@/routes";
 const usePaginationChats = ({ userId = "" }) => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const perPage = 2;
+  const perPage = 15;
 
   const { data, isLoading, error, mutate, size, setSize, isReachingEnd } =
     useChats(perPage, userId);

@@ -45,7 +45,7 @@ const Layout1 = () => {
         title="Eliminar"
         description="¿Estás seguro de que deseas eliminar este chat?"
         footer={
-          <div className="">
+          <div>
             <Button onClick={onDelete} variant="destructive">
               Eliminar
             </Button>
